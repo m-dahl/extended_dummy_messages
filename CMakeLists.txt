@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(unification_ros2_messages)
+project(extended_dummy_messages)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -24,14 +24,9 @@ find_package(ament_cmake REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
-rosidl_generate_interfaces(unification_ros2_messages
-  "msg/MoveItSPToUni.msg"
-  "msg/MoveItUniToSP.msg"
-  "msg/RobotiqSPToUni.msg"
-  "msg/RobotiqUniToSP.msg"
-  "msg/HecuUniToSP.msg"
-  "msg/UpdaterSPToUni.msg"
-  "msg/UpdaterUniToSP.msg"
+rosidl_generate_interfaces(extended_dummy_messages
+  "msg/Control.msg"
+  "msg/State.msg"
   DEPENDENCIES builtin_interfaces
 )
 
@@ -45,31 +40,5 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
-install(
-  FILES moveit_sp_to_unidriver_mpr.yaml
-  DESTINATION share/${PROJECT_NAME})
-
-install(
-  FILES moveit_unidriver_to_sp_mpr.yaml
-  DESTINATION share/${PROJECT_NAME})
-
-install(
-  FILES robotiq_sp_to_uni_mpr.yaml
-  DESTINATION share/${PROJECT_NAME})
-
-install(
-  FILES robotiq_uni_to_sp_mpr.yaml
-  DESTINATION share/${PROJECT_NAME})
-
-install(
-  FILES updater_sp_to_uni_mpr.yaml
-  DESTINATION share/${PROJECT_NAME})
-
-install(
-  FILES updater_uni_to_sp_mpr.yaml
-  DESTINATION share/${PROJECT_NAME})
-
-
 
 ament_package()

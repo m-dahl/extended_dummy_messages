@@ -1,2 +1,0 @@
-bool lf_tool_home
-bool filter_tool_home
